@@ -1,2 +1,51 @@
-hello!
 
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      position: fixed;
+      top: 10px;
+      left: 100px;
+      width: 150px;
+      height: 150px;
+      background-color: red;
+      z-index: 100;
+    }
+    
+    p {
+      font-size: 25px;
+      position: fixed;
+      top: 200px;
+      color: rgb(132, 132, 250);
+    }
+    span {
+      font-size: 30px;
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+  <p>touchmove count :<span>1</span></p>
+  <ul></ul>
+  <script>
+    let count = 0;
+    const box = document.querySelector('.box');
+    box.addEventListener('touchmove',(e)=> {
+      e.preventDefault();
+      count ++;
+      document.querySelector('p > span').textContent = count;
+    })
+    for(let i = 0; i < 300; i++){
+      const li = document.createElement('li');
+      li.textContent = i;
+      document.querySelector('ul').appendChild(li);
+    }
+  </script>
+</body>
+</html>
